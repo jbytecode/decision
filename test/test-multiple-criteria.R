@@ -1,6 +1,6 @@
 library("testthat")
 
-source ("../src/topsis.R")
+source ("../src/multiple-criteria.R")
 
 test_that("Test Topsis - best index, 3 alternatives, 4 criteria",{
   A <- matrix(c(9,7,6,7,8,7,9,6,7,8,6,6), nrow = 3, byrow = TRUE)
