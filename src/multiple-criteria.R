@@ -1,7 +1,33 @@
+#' @name euclidean
+#' @title Euclidean distance between two vectors
+#' @description This function simply returns the euclidean distance between two vectors.
+#' @param p1 First n-vector
+#' @param p2 Second n-vector
+#' @return Euclidean distance
+#' @author Mehmet Hakan Satman - mhsatman@istanbul.edu.tr
+#' @examples
+#' x1 <- c(0,0,0)
+#' x2 <- c(4,3,2)
+#' distance <- euclidean(x1, x2)
+#' print(distance)
 euclidean <- function(p1, p2){
   return(sqrt(sum((p2 - p1)^2)))
 }
 
+
+
+#' @name euclideanToOrigin
+#' @title Euclidean distance between origin and an n-vector
+#' @description This function is a wrapper for \code{euclidean} function in which the first argument
+#' is always origin of euclidean n-space
+#' @param p1 An n-vector
+#' @return Euclidean distance
+#' @author Mehmet Hakan Satman - mhsatman@istanbul.edu.tr
+#' @examples
+#' x1 <- c(4,3,2)
+#' distance <- euclideanToOrigin(x1)
+#' print(distance)
+#' print(euclidean(x1, c(0,0,0)) == euclideanToOrigin(x1))
 euclideanToOrigin <- function(p1){
   return (euclidean(p1, rep(0, length(p1))))
 }
@@ -66,8 +92,6 @@ topsis <- function(decisionMatrix, weights){
 
 
 
-
-# Vikor
 vikor <- function(decisionMatrix, weights, v = 0.5){
   A <- prepareDecisionMatrixHeaders(decisionMatrix)
   w <- weights
