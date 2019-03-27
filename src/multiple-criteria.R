@@ -65,3 +65,45 @@ topsis <- function(decisionMatrix, weights){
 }
 
 
+
+
+# Vikor
+vikor <- function(decisionMatrix, weights, v = 0.5){
+  A <- prepareDecisionMatrixHeaders(decisionMatrix)
+  w <- weights
+  if(sum(w) != 1){
+    w <- w / sum(w)
+  }
+  num.criterias <- dim(A)[2]
+  num.alternatives <- dim(A)[1]
+  col.max <- apply(A, 2, max)
+  col.min <- apply(A, 2, min)
+  
+  for (i in 1:num.alternatives){
+    for (j in 1:num.criterias){
+      A[i, j] <- abs((col.max[j] - A[i, j])/(col.max[j] - col.min[j]))
+    }
+  }
+  newA.weighted <- t(w * t(A))
+  s <- rep(NA, num.alternatives)
+  r <- rep(NA, num.alternatives)
+  q <- rep(NA, num.alternatives)
+  for (i in 1:num.alternatives){
+    s[i] <- sum(newA.weighted[i,])
+    r[i] <- max(newA.weighted[i,])
+  }
+  q <- v * ((s - min(s)) / (max(s) - min(s))) + (1 - v) * ((r - min(r)) / (max(r) - min(r)))
+  best.index <- order(q, decreasing = FALSE)[1]
+  best.alternative <- rownames(A)[best.index]
+  return(
+    list(
+      decision.matrix = A,
+      weights = w,
+      scores = q,
+      best = best.alternative,
+      best.index = best.index
+    )
+  )
+}
+
+
