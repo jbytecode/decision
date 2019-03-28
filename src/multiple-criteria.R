@@ -223,10 +223,33 @@ electre <- function(decisionMatrix, weights){
 }
 
 
-w <- c(0.110, 0.035, 0.379, 0.384, 0.002, 0.002, 0.010, 0.077)
-A <- matrix(c(100, 92, 10, 2, 80, 70, 95, 80,
-              80, 70, 8, 4, 100, 80, 80, 90,
-              90, 85, 5, 0, 75, 95, 70, 70,
-              70, 88, 20, 18, 60, 90, 95, 85), nrow = 4, byrow = TRUE)
-result <- electre(A, w)
+moora <- function(decisionMatrix, weights){
+  A <- prepareDecisionMatrixHeaders(decisionMatrix)
+  w <- weights
+  if(sum(w) != 1){
+    w <- w / sum(w)
+  }
+  num.criterias <- dim(A)[2]
+  num.alternatives <- dim(A)[1]
+  newA <- apply(A, 2, normalize)
+  newA.weighted <- t(w * t(newA))
+  col.max <- apply(newA.weighted, 2, max)
+  newA.weighted.reference <- t(col.max - t(newA.weighted)) 
+  row.max <- apply(newA.weighted.reference, 1, max)
+  best.index <- order(row.max, decreasing = FALSE)[1]
+  best <- rownames(A)[best.index]
+  return(
+    list(
+      decision.matrix = A,
+      decision.matrix.weighted = newA.weighted,
+      decision.matrix.weighted.ref = newA.weighted.reference,
+      weights = w,
+      scores = as.double(row.max),
+      best.index = best.index,
+      best = best
+    )
+  )
+}
+
+
 
