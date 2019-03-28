@@ -32,6 +32,19 @@ euclideanToOrigin <- function(p1){
   return (euclidean(p1, rep(0, length(p1))))
 }
 
+#' @name normalize
+#' @title Normalizes a vector
+#' @description Normalizes a vector by dividing all of the elements in the vector by the vector norm.
+#' Vector norm is the euclidean distance of the vector with the origin. Squared elements of the vector
+#'  sum up to 1.
+#' @param vector A vector
+#' @return Returns the normalized vector
+#' @author Mehmet Hakan Satman - mhsatman@istanbul.edu.tr
+#' @examples
+#' x1 <- c(4,3,2)
+#' x1.normalized <- normalize(x1)
+#' print(x1.normalized)
+#' print(sum(x1.normalized ^ 2) == 1)
 normalize <- function(vector){
   return(vector / euclideanToOrigin(vector))
 }
