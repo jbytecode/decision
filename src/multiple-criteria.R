@@ -82,6 +82,7 @@ topsis <- function(decisionMatrix, weights){
 	return(
 		list(
 		  decision.matrix = A,
+		  decision.matrix.weighted = newA.weighted,
 		  weights = w,
 			scores = scores,
 			best = best.alternative,
@@ -122,6 +123,7 @@ vikor <- function(decisionMatrix, weights, v = 0.5){
   return(
     list(
       decision.matrix = A,
+      decision.matrix.weighted = newA.weighted,
       weights = w,
       scores = q,
       best = best.alternative,
@@ -130,4 +132,101 @@ vikor <- function(decisionMatrix, weights, v = 0.5){
   )
 }
 
+
+electre <- function(decisionMatrix, weights){
+  A <- prepareDecisionMatrixHeaders(decisionMatrix)
+  w <- weights
+  if(sum(w) != 1){
+    w <- w / sum(w)
+  }
+  num.criterias <- dim(A)[2]
+  num.alternatives <- dim(A)[1]
+  newA <- apply(A, 2, normalize)
+  newA.weighted <- t(w * t(newA))
+  fitness.table <- list()
+  nonfitness.table <- list()
+  for (i in 1:num.alternatives){
+    for (j in 1:num.alternatives){
+      if(i != j){
+      better.list <- c()
+      worse.list <- c()
+      for (h in 1:num.criterias){
+        if(newA.weighted[i, h] >= newA.weighted[j, h]){
+          better.list <- append(better.list, h)
+        }else{
+          worse.list <- append(worse.list, h)
+        }
+      }
+      fitness.table.element <- list(i = i, j = j, set = better.list)
+      fitness.table[[length(fitness.table) + 1]] <- fitness.table.element
+      
+      nonfitness.table.element <- list(i = i, j = j, set = worse.list)
+      nonfitness.table[[length(nonfitness.table) + 1]] <- nonfitness.table.element
+      }
+    }
+  }
+  
+  fitness.matrix <- matrix(NA, ncol = num.alternatives, nrow = num.alternatives)
+  nonfitness.matrix <- matrix(NA, ncol = num.alternatives, nrow = num.alternatives)
+  for (elements in fitness.table){
+    i <- elements[["i"]]
+    j <- elements[["j"]]
+    elem.list <- elements[["set"]]
+    
+    CC <- sum(w[elem.list])
+    fitness.matrix[i, j] <- CC
+  }
+  
+  nonfitness.matrix <- matrix(NA, ncol = num.alternatives, nrow = num.alternatives)
+  for (elements in nonfitness.table){
+    i <- elements[["i"]]
+    j <- elements[["j"]]
+    elem.list <- elements[["set"]]
+    
+    r.ik <- newA.weighted[i, elem.list]
+    r.jk <- newA.weighted[j, elem.list]
+    r.ik.full <- newA.weighted[i, ]
+    r.jk.full <- newA.weighted[j, ]
+    nom <- max(abs(r.ik - r.jk))
+    dom <- max(abs(r.ik.full - r.jk.full))
+    nonfitness.matrix[i, j] <- nom / dom
+  }
+  
+  C <- rep(NA, num.alternatives)
+  D <- rep(NA, num.alternatives)
+  for (i in 1:num.alternatives){
+    C[i] <- sum(fitness.matrix[i, ], na.rm = TRUE) - sum(fitness.matrix[ ,i], na.rm = TRUE)
+    D[i] <- sum(nonfitness.matrix[i, ], na.rm = TRUE) - sum(nonfitness.matrix[ ,i], na.rm = TRUE)
+  }
+  best.C.index <- order(C, decreasing = TRUE)[1]
+  best.D.index <- order(D, decreasing = FALSE)[1]
+  if(best.C.index == best.D.index){
+    best <- row.names(A)[best.C.index]
+  }else{
+    best <- c(row.names(A)[best.C.index], row.names(A)[best.D.index])
+  }
+  return(
+    list(
+      decision.matrix = A,
+      decision.matrix.weighted = newA.weighted,
+      weights = w,
+      fitness.table,
+      nonfitness.table,
+      fitness.matrix,
+      nonfitness.matrix,
+      C = C, 
+      D = D,
+      best = best,
+      best.index = list(C = best.C.index, D = best.D.index)
+    )
+  )
+}
+
+
+w <- c(0.110, 0.035, 0.379, 0.384, 0.002, 0.002, 0.010, 0.077)
+A <- matrix(c(100, 92, 10, 2, 80, 70, 95, 80,
+              80, 70, 8, 4, 100, 80, 80, 90,
+              90, 85, 5, 0, 75, 95, 70, 70,
+              70, 88, 20, 18, 60, 90, 95, 85), nrow = 4, byrow = TRUE)
+result <- electre(A, w)
 
