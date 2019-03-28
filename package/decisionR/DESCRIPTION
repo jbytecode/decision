@@ -1,10 +1,10 @@
 Package: decisionR
 Type: Package
-Title: What the package does (short line)
+Title: Implements some multiple-criteria decision making methods
 Version: 1.0
 Date: 2019-03-28
-Author: Who wrote it
-Maintainer: Who to complain to <yourfault@somewhere.net>
-Description: More about what it does (maybe more than one line)
-License: What license is it under?
+Author: Mehmet Hakan Satman <mhsatman@istanbul.edu.tr>
+Maintainer: Mehmet Hakan Satman <mhsatman@istanbul.edu.tr>
+Description: Initially, the package implements some multiple-criteria decision making methods including Vikor, Topsis, Electre, and Moora.
+License: GPL
 RoxygenNote: 6.1.1
