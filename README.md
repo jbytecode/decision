@@ -18,3 +18,16 @@ library(devtools)
 
 devtools::install_github(repo = "https://github.com/jbytecode/decision", subdir = "package/decisionR")
 
+
+
+Examples:
+---------------
+decision.matrix <- matrix(c(6,5,7,5,6,7,8,4,3,4,5,6), nrow = 3, byrow = TRUE)
+
+weights <- c(0.5, 0.20, 0.15, 0.15)
+
+result <- topsis(decision.matrix, weights)
+
+print(result$best)
+
+[1] "Alternative 2"
