@@ -83,7 +83,19 @@ prepareDecisionMatrixHeaders <- function(A){
   return(A)
 }
 
-# Topsis
+#' @name topsis
+#' @title Topsis Method
+#' @description This function implements the Topsis method for the multiple-criteria decision problem.
+#' @param A Decision matrix
+#' @param weights Weights for criteria (Measure of how important the criteria are.)
+#' @return A list of results.
+#' @references Celikbilek Yakup, Cok Kriterli Karar Verme Yontemleri, Aciklamali ve Karsilastirmali
+#' Saglik Bilimleri Uygulamalari ile. Editor: Muhlis Ozdemir, Nobel Kitabevi, Ankara, 2018
+#' @author Mehmet Hakan Satman - mhsatman@istanbul.edu.tr
+#' @examples
+#' x <- matrix(1:30, nrow = 5, ncol = 6)
+#' decision.matrix <- prepareDecisionMatrixHeaders(x)
+#' print(decision.matrix)
 topsis <- function(decisionMatrix, weights){
 	A <- prepareDecisionMatrixHeaders(decisionMatrix)
 	w <- weights
