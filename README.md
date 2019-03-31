@@ -13,6 +13,8 @@ Future work:
 
 Installation:
 -------------
-> library(devtools)
-> devtools::install_github(repo = "https://github.com/jbytecode/decision", subdir = "package/decisionR")
+
+library(devtools)
+
+devtools::install_github(repo = "https://github.com/jbytecode/decision", subdir = "package/decisionR")
 
