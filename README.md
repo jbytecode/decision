@@ -8,5 +8,5 @@ Future work:
 * Implement Vikor &#10004;
 * Implement Moora &#10004;
 * Implement Electre &#10004;
-* Implement AHP
+* Implement AHP &#10004;
 * Implement ANP
