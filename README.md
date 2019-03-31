@@ -10,3 +10,9 @@ Future work:
 * Implement Electre &#10004;
 * Implement AHP &#10004;
 * Implement ANP
+
+Installation:
+-------------
+> library(devtools)
+> devtools::install_github(repo = "https://github.com/jbytecode/decision", subdir = "package/decisionR")
+
