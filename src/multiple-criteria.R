@@ -49,6 +49,20 @@ normalize <- function(vector){
   return(vector / euclideanToOrigin(vector))
 }
 
+#' @name prepareDecisionMatrixHeaders
+#' @title prepareDecisionMatrixHeaders
+#' @description This function prepares the matrix headers for a given decision matrix.
+#' The column names are set to Criateri 1, Criteria 2, ..., Criteria M and 
+#' the row names are set to Alternative 1, Alternative 2, ..., Alternative N where 
+#' M is the number of criteria and N is the number of alternatives. This function is not generally
+#' called by the user. The headers are set in the multiple-criteria decision making tools such as Topsis. 
+#' @param A Decision matrix
+#' @return Same decision matrix with row and column names
+#' @author Mehmet Hakan Satman - mhsatman@istanbul.edu.tr
+#' @examples
+#' x <- matrix(1:30, nrow = 5, ncol = 6)
+#' decision.matrix <- prepareDecisionMatrixHeaders(x)
+#' print(decision.matrix)
 prepareDecisionMatrixHeaders <- function(A){
   n <- dim(A)[1]
   p <- dim(A)[2]
