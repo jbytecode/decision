@@ -311,4 +311,32 @@ ahp.consistency <- function(CriteriaComparisonMatrix){
   )
 }
 
+ahp <- function(candidateComparisonMatrixList, CriteriaComparisonMatrix){
+  result.list <- lapply(candidateComparisonMatrixList, ahp.consistency)
+  n <- length(result.list)
+  num.criterian <- dim(CriteriaComparisonMatrix)[1]
+  num.candidates <- dim(candidateComparisonMatrixList[[1]])[1]
+  decision.matrix <- matrix(NA, nrow = num.candidates, ncol = num.criterian)
+  for (i in 1:n){
+    decision.matrix[,i] <- result.list[[i]]$priority.vector
+  }
+  decision.matrix <- prepareDecisionMatrixHeaders(decision.matrix)
+  criteria.consistency <- ahp.consistency(CriteriaComparisonMatrix)
+  weights <- criteria.consistency$priority.vector
+  ordering.result <- decision.matrix %*% weights
+  best.index <- order(ordering.result, decreasing = TRUE)[1]
+  best <- row.names(decision.matrix)[best.index]
+  return(
+    list(
+      decision.matrix = decision.matrix,
+      weights = weights,
+      ordering.result = ordering.result,
+      best.index = best.index,
+      best = best
+    )
+  )
+}
+
+
+
 

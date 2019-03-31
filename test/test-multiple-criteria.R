@@ -168,3 +168,57 @@ test_that("Test Ahp Consistency - p / c vector",{
                                    8.848075, 8.860427, 8.941498,
                                    8.946071, 8.625595), tolerance = 1 / 1000)
 })
+
+
+
+test_that("Test Ahp - Big example",{
+  K <- matrix(c(
+    1,7,1/5,1/8,1/2,1/3,1/5,1,
+    1/7,1,1/8,1/9,1/4,1/5,1/9,1/8,
+    5,8,1,1/3,4,2,1,1,
+    8,9,3,1,7,5,3,3,
+    2,4,1/4,1/7,1,1/2,1/5,1/5,
+    3,5,1/2,1/5,2,1,1/3,1/3,
+    5,9,1,1/3,5,3,1,1,
+    1,8,1,1/3,5,3,1,1
+  ), nrow = 8, byrow = TRUE)
+  candidateComparisonMatrixList <- list(
+    A1 = matrix(c(1,3,1/5,2,
+                  1/3,1,1/7,1/3,
+                  5,7,1,4,
+                  1/2,3,1/4,1), nrow = 4, byrow = TRUE),
+    A2 = matrix(c(1,1/2,4,5,
+                  2,1,6,7,
+                  1/4,1/6,1,3,
+                  1/5,1/7,1/3,1), nrow = 4, byrow = TRUE),
+    A3 = matrix(c(1,1/2,1/6,3,
+                  2,1,1/4,5,
+                  6,4,1,9,
+                  1/3,1/5,1/9,1), nrow = 4, byrow = TRUE),
+    A4 = matrix(c(1,7,1/4,2,
+                  1/7,1,1/9,1/5,
+                  4,9,1,5,
+                  1/2,5,1/5,1), nrow = 4, byrow = TRUE),
+    A5 = matrix(c(1,6,2,3,
+                  1/6,1,1/4,1/3,
+                  1/2,4,1,2,
+                  1/3,3,1/2,1), nrow = 4, byrow = TRUE),
+    A6 = matrix(c(1,1/4,1/2,1/7,
+                  4,1,2,1/3,
+                  2,1/2,1,1/5,
+                  7,3,5,1), nrow = 4, byrow = TRUE),
+    A7 = matrix(c(1,3,7,1,
+                  1/3,1,4,1/3,
+                  1/7,1/4,1,1/7,
+                  1,3,7,1), nrow = 4, byrow = TRUE),
+    A8 = matrix(c(1,2,5,8,
+                  1/2,1,3,6,
+                  1/5,1/3,1,3,
+                  1/8,1/6,1/3,1), nrow = 4, byrow = TRUE)
+  )
+  result <- ahp(candidateComparisonMatrixList, K)
+  expect_equal(result$best.index, 3)
+  expect_equal(result$best, "Alternative 3")
+  expect_equal(as.vector(result$ordering.result), 
+               c(0.2801050, 0.1482273, 0.3813036, 0.1903641), tolerance = 1 / 100)
+})
