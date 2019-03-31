@@ -264,5 +264,51 @@ moora <- function(decisionMatrix, weights){
   )
 }
 
+ahp.RI <- function (n){
+    # First index is n = 3, so RI[3] = 0.58
+    RI <- c(0.58, 0.90, 1.12, 1.24, 1.32,
+          1.41, 1.45, 1.49, 1.51, 1.53,
+          1.56, 1.57, 1.59)
+  if(n < 3){
+    return(0)
+  }else if(n <= 15){
+    return (RI[n - 2])
+  }else{
+    return(RI[length(RI)])
+  }
+}
+
+ahp.consistency <- function(CriteriaComparisonMatrix){
+  n <- dim(CriteriaComparisonMatrix)[1]
+  m <- n
+  colSums.comparison <- apply(CriteriaComparisonMatrix, 2, sum)
+  normalized.comparison <- matrix(NA, nrow = n, ncol = n)
+  for (i in 1:n){
+    for (j in 1:n){
+      normalized.comparison[i, j] <- CriteriaComparisonMatrix[i, j] / colSums.comparison[j]
+    }
+  }
+  priority.vector <- apply(normalized.comparison, 1, mean)
+  consistency.vector <- CriteriaComparisonMatrix %*% priority.vector
+  pc.matrix <- consistency.vector / priority.vector
+  lambda.max <- sum(pc.matrix) / n
+  CI <- (lambda.max - n) / (n - 1)
+  RI <- ahp.RI(n)
+  CR <- CI / RI
+  consistent <- (CR < 0.1)
+  return(
+    list(
+      normalized.comparison = normalized.comparison,
+      priority.vector = priority.vector,
+      consistency.vector = consistency.vector,
+      pc.matrix = as.vector(pc.matrix),
+      lambda.max = lambda.max,
+      CI = CI,
+      RI = RI,
+      CR = CR,
+      consistent = consistent
+    )
+  )
+}
 
 

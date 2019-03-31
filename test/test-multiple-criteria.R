@@ -103,3 +103,68 @@ test_that("Test Moora - scores",{
   result <- moora(A, w)
   expect_equal(result$scores, c(0.33159387, 0.29014464, 0.37304311, 0.01926526), tolerance = 1 / 1000)
 })
+
+
+test_that("Test Ahp Consistency - CR",{
+  K <- matrix(c(
+    1,7,1/5,1/8,1/2,1/3,1/5,1,
+    1/7,1,1/8,1/9,1/4,1/5,1/9,1/8,
+    5,8,1,1/3,4,2,1,1,
+    8,9,3,1,7,5,3,3,
+    2,4,1/4,1/7,1,1/2,1/5,1/5,
+    3,5,1/2,1/5,2,1,1/3,1/3,
+    5,9,1,1/3,5,3,1,1,
+    1,8,1,1/3,5,3,1,1
+  ), nrow = 8, byrow = TRUE)
+  result <- ahp.consistency(K)
+  expect_equal(result$CR, 0.0736, tolerance = 1 / 1000)
+})
+
+
+test_that("Test Ahp Consistency - CI",{
+  K <- matrix(c(
+    1,7,1/5,1/8,1/2,1/3,1/5,1,
+    1/7,1,1/8,1/9,1/4,1/5,1/9,1/8,
+    5,8,1,1/3,4,2,1,1,
+    8,9,3,1,7,5,3,3,
+    2,4,1/4,1/7,1,1/2,1/5,1/5,
+    3,5,1/2,1/5,2,1,1/3,1/3,
+    5,9,1,1/3,5,3,1,1,
+    1,8,1,1/3,5,3,1,1
+  ), nrow = 8, byrow = TRUE)
+  result <- ahp.consistency(K)
+  expect_equal(result$CI, 0.1038, tolerance = 1 / 1000)
+})
+
+test_that("Test Ahp Consistency - Lambda max",{
+  K <- matrix(c(
+    1,7,1/5,1/8,1/2,1/3,1/5,1,
+    1/7,1,1/8,1/9,1/4,1/5,1/9,1/8,
+    5,8,1,1/3,4,2,1,1,
+    8,9,3,1,7,5,3,3,
+    2,4,1/4,1/7,1,1/2,1/5,1/5,
+    3,5,1/2,1/5,2,1,1/3,1/3,
+    5,9,1,1/3,5,3,1,1,
+    1,8,1,1/3,5,3,1,1
+  ), nrow = 8, byrow = TRUE)
+  result <- ahp.consistency(K)
+  expect_equal(result$lambda.max, 8.7264, tolerance = 1 / 1000)
+})
+
+
+test_that("Test Ahp Consistency - p / c vector",{
+  K <- matrix(c(
+    1,7,1/5,1/8,1/2,1/3,1/5,1,
+    1/7,1,1/8,1/9,1/4,1/5,1/9,1/8,
+    5,8,1,1/3,4,2,1,1,
+    8,9,3,1,7,5,3,3,
+    2,4,1/4,1/7,1,1/2,1/5,1/5,
+    3,5,1/2,1/5,2,1,1/3,1/3,
+    5,9,1,1/3,5,3,1,1,
+    1,8,1,1/3,5,3,1,1
+  ), nrow = 8, byrow = TRUE)
+  result <- ahp.consistency(K)
+  expect_equal(result$pc.matrix, c(8.409822, 8.227924, 8.952010,
+                                   8.848075, 8.860427, 8.941498,
+                                   8.946071, 8.625595), tolerance = 1 / 1000)
+})
