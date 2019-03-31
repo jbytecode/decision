@@ -93,9 +93,11 @@ prepareDecisionMatrixHeaders <- function(A){
 #' Saglik Bilimleri Uygulamalari ile. Editor: Muhlis Ozdemir, Nobel Kitabevi, Ankara, 2018
 #' @author Mehmet Hakan Satman - mhsatman@istanbul.edu.tr
 #' @examples
-#' x <- matrix(1:30, nrow = 5, ncol = 6)
-#' decision.matrix <- prepareDecisionMatrixHeaders(x)
-#' print(decision.matrix)
+#' A <- matrix(c(9,7,6,7,8,7,9,6,7,8,6,6), nrow = 3, byrow = TRUE)
+#' W <- c(4, 2, 6, 8)
+#' w <- W / sum(W)
+#' result <- topsis(A, w)
+#' print(result)
 topsis <- function(decisionMatrix, weights){
 	A <- prepareDecisionMatrixHeaders(decisionMatrix)
 	w <- weights
@@ -131,7 +133,22 @@ topsis <- function(decisionMatrix, weights){
 }
 
 
-
+#' @name vikor
+#' @title Vikor Method
+#' @description This function implements the Vikor method for the multiple-criteria decision problem.
+#' @param A Decision matrix
+#' @param weights Weights for criteria (Measure of how important the criteria are.)
+#' @param v Another weight parameter which is defined in range 0 < v < 1 and set to 0.5 by default.
+#' @return A list of results.
+#' @references Celikbilek Yakup, Cok Kriterli Karar Verme Yontemleri, Aciklamali ve Karsilastirmali
+#' Saglik Bilimleri Uygulamalari ile. Editor: Muhlis Ozdemir, Nobel Kitabevi, Ankara, 2018
+#' @author Mehmet Hakan Satman - mhsatman@istanbul.edu.tr
+#' @examples
+#' A <- matrix(c(9,7,6,7,8,7,9,6,7,8,6,6), nrow = 3, byrow = TRUE)
+#' W <- c(4, 2, 6, 8)
+#' w <- W / sum(W)
+#' result <- vikor(A, w)
+#' print(result)
 vikor <- function(decisionMatrix, weights, v = 0.5){
   A <- prepareDecisionMatrixHeaders(decisionMatrix)
   w <- weights
@@ -171,7 +188,21 @@ vikor <- function(decisionMatrix, weights, v = 0.5){
   )
 }
 
-
+#' @name electre
+#' @title Electre Method
+#' @description This function implements the Electre method for the multiple-criteria decision problem.
+#' @param A Decision matrix
+#' @param weights Weights for criteria (Measure of how important the criteria are.)
+#' @return A list of results.
+#' @references Celikbilek Yakup, Cok Kriterli Karar Verme Yontemleri, Aciklamali ve Karsilastirmali
+#' Saglik Bilimleri Uygulamalari ile. Editor: Muhlis Ozdemir, Nobel Kitabevi, Ankara, 2018
+#' @author Mehmet Hakan Satman - mhsatman@istanbul.edu.tr
+#' @examples
+#' A <- matrix(c(9,7,6,7,8,7,9,6,7,8,6,6), nrow = 3, byrow = TRUE)
+#' W <- c(4, 2, 6, 8)
+#' w <- W / sum(W)
+#' result <- electre(A, w)
+#' print(result)
 electre <- function(decisionMatrix, weights){
   A <- prepareDecisionMatrixHeaders(decisionMatrix)
   w <- weights
@@ -261,7 +292,21 @@ electre <- function(decisionMatrix, weights){
   )
 }
 
-
+#' @name moora
+#' @title Moora Method
+#' @description This function implements the Moora method for the multiple-criteria decision problem.
+#' @param A Decision matrix
+#' @param weights Weights for criteria (Measure of how important the criteria are.)
+#' @return A list of results.
+#' @references Celikbilek Yakup, Cok Kriterli Karar Verme Yontemleri, Aciklamali ve Karsilastirmali
+#' Saglik Bilimleri Uygulamalari ile. Editor: Muhlis Ozdemir, Nobel Kitabevi, Ankara, 2018
+#' @author Mehmet Hakan Satman - mhsatman@istanbul.edu.tr
+#' @examples
+#' A <- matrix(c(9,7,6,7,8,7,9,6,7,8,6,6), nrow = 3, byrow = TRUE)
+#' W <- c(4, 2, 6, 8)
+#' w <- W / sum(W)
+#' result <- moora(A, w)
+#' print(result)
 moora <- function(decisionMatrix, weights){
   A <- prepareDecisionMatrixHeaders(decisionMatrix)
   w <- weights
@@ -290,6 +335,17 @@ moora <- function(decisionMatrix, weights){
   )
 }
 
+#' @name ahp.RI
+#' @title Random Index for AHP method.
+#' @description This function returns returns the Random Index (RI) for a given n where n >= 3
+#' @param n an integer greater or equals to 3. 
+#' @return Random Index.
+#' @references Celikbilek Yakup, Cok Kriterli Karar Verme Yontemleri, Aciklamali ve Karsilastirmali
+#' Saglik Bilimleri Uygulamalari ile. Editor: Muhlis Ozdemir, Nobel Kitabevi, Ankara, 2018
+#' @author Mehmet Hakan Satman - mhsatman@istanbul.edu.tr
+#' @examples
+#' ahp.RI(3)
+#' # Returns 0.58
 ahp.RI <- function (n){
     # First index is n = 3, so RI[3] = 0.58
     RI <- c(0.58, 0.90, 1.12, 1.24, 1.32,
