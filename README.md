@@ -3,13 +3,15 @@ An R package for decision science.
 Initially, this package includes some multiple-criterion decision making tools such as Topsis and Vikor.
 
 Future work:
-* Implement Dematel 
+* Implement Dematel &#10004; 
 * Implement Topsis &#10004;
 * Implement Vikor &#10004;
 * Implement Moora &#10004;
 * Implement Electre &#10004;
 * Implement AHP &#10004;
 * Implement ANP
+* Implement Promethee
+
 
 Installation:
 -------------
