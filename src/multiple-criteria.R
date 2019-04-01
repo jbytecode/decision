@@ -420,5 +420,41 @@ ahp <- function(candidateComparisonMatrixList, CriteriaComparisonMatrix){
 }
 
 
+dematel <- function(K, threshold = NULL){
+  n <- dim(K)[1]
+  col.sums <- apply(K, 2, sum)
+  row.sums <- apply(K, 1, sum)
+  largest <- max(c(col.sums, row.sums))
+  ND <- K / largest
+  T <- ND %*% solve(diag(n) - ND)
+  c <- apply(T, 1, sum)
+  r <- apply(T, 2, sum)
+  c.plus.r <- c + r
+  c.minus.r <- c - r
+  if (is.null(threshold)){
+    threshold <- mean(T)
+  }
+  influence.matrix <- matrix(0, n, n)
+  for (i in 1:n){
+    for (j in 1:n){
+      if(T[i,j] > threshold){
+        influence.matrix[i, j] <- 1
+      }
+    }
+  }
+  return(
+    list(
+      ND = ND,
+      total.relationship.matrix = T,
+      c = c,
+      r = r,
+      c.plus.r = c.plus.r,
+      c.minus.r = c.minus.r,
+      threshold = threshold,
+      influence.matrix = influence.matrix
+    )
+  )
+}
+
 
 

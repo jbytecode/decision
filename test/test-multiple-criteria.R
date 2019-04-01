@@ -2,7 +2,12 @@ library("testthat")
 
 source ("../src/multiple-criteria.R")
 
+testStatus <- function(strMessage){
+  cat("* Doing test: ", strMessage, "\n")  
+}
+
 test_that("Test Topsis - best index, 3 alternatives, 4 criteria",{
+  testStatus("Test Topsis - best index, 3 alternatives, 4 criteria")
   A <- matrix(c(9,7,6,7,8,7,9,6,7,8,6,6), nrow = 3, byrow = TRUE)
   W <- c(4, 2, 6, 8)
   w <- W / sum(W)
@@ -11,6 +16,7 @@ test_that("Test Topsis - best index, 3 alternatives, 4 criteria",{
 })
 
 test_that("Test Topsis - best alternative, 3 alternatives, 4 criteria",{
+  testStatus("Test Topsis - best alternative, 3 alternatives, 4 criteria")
   A <- matrix(c(9,7,6,7,8,7,9,6,7,8,6,6), nrow = 3, byrow = TRUE)
   W <- c(4, 2, 6, 8)
   w <- W / sum(W)
@@ -19,6 +25,7 @@ test_that("Test Topsis - best alternative, 3 alternatives, 4 criteria",{
 })
 
 test_that("Test Topsis - scores, 3 alternatives, 4 criteria",{
+  testStatus("Test Topsis - scores, 3 alternatives, 4 criteria")
   A <- matrix(c(9,7,6,7,8,7,9,6,7,8,6,6), nrow = 3, byrow = TRUE)
   W <- c(4, 2, 6, 8)
   w <- W / sum(W)
@@ -29,6 +36,7 @@ test_that("Test Topsis - scores, 3 alternatives, 4 criteria",{
 
 
 test_that("Test Vikor - best.index",{
+  testStatus("Test Vikor - best.index")
   w <- c(0.110, 0.035, 0.379, 0.384, 0.002, 0.002, 0.010, 0.077)
   A <- matrix(c(100, 92, 10, 2, 80, 70, 95, 80,
                 80, 70, 8, 4, 100, 80, 80, 90,
@@ -40,6 +48,7 @@ test_that("Test Vikor - best.index",{
 
 
 test_that("Test Vikor - best",{
+  testStatus("Test Vikor - best")
   w <- c(0.110, 0.035, 0.379, 0.384, 0.002, 0.002, 0.010, 0.077)
   A <- matrix(c(100, 92, 10, 2, 80, 70, 95, 80,
                 80, 70, 8, 4, 100, 80, 80, 90,
@@ -51,6 +60,7 @@ test_that("Test Vikor - best",{
 
 
 test_that("Test Electre - best",{
+  testStatus("Test Electre - best")
   w <- c(0.110, 0.035, 0.379, 0.384, 0.002, 0.002, 0.010, 0.077)
   A <- matrix(c(100, 92, 10, 2, 80, 70, 95, 80,
                 80, 70, 8, 4, 100, 80, 80, 90,
@@ -62,6 +72,7 @@ test_that("Test Electre - best",{
 
 
 test_that("Test Electre - C vector",{
+  testStatus("Test Electre - C vector")
   w <- c(0.110, 0.035, 0.379, 0.384, 0.002, 0.002, 0.010, 0.077)
   A <- matrix(c(100, 92, 10, 2, 80, 70, 95, 80,
                 80, 70, 8, 4, 100, 80, 80, 90,
@@ -73,6 +84,7 @@ test_that("Test Electre - C vector",{
 
 
 test_that("Test Electre - D vector",{
+  testStatus("Test Electre - D vector")
   w <- c(0.110, 0.035, 0.379, 0.384, 0.002, 0.002, 0.010, 0.077)
   A <- matrix(c(100, 92, 10, 2, 80, 70, 95, 80,
                 80, 70, 8, 4, 100, 80, 80, 90,
@@ -95,6 +107,7 @@ test_that("Test Moora - best",{
 
 
 test_that("Test Moora - scores",{
+  testStatus("Test Moora - scores")
   w <- c(0.110, 0.035, 0.379, 0.384, 0.002, 0.002, 0.010, 0.077)
   A <- matrix(c(100, 92, 10, 2, 80, 70, 95, 80,
                 80, 70, 8, 4, 100, 80, 80, 90,
@@ -106,6 +119,7 @@ test_that("Test Moora - scores",{
 
 
 test_that("Test Ahp Consistency - CR",{
+  testStatus("Test Ahp Consistency - CR")
   K <- matrix(c(
     1,7,1/5,1/8,1/2,1/3,1/5,1,
     1/7,1,1/8,1/9,1/4,1/5,1/9,1/8,
@@ -122,6 +136,7 @@ test_that("Test Ahp Consistency - CR",{
 
 
 test_that("Test Ahp Consistency - CI",{
+  testStatus("Test Ahp Consistency - CI")
   K <- matrix(c(
     1,7,1/5,1/8,1/2,1/3,1/5,1,
     1/7,1,1/8,1/9,1/4,1/5,1/9,1/8,
@@ -137,6 +152,7 @@ test_that("Test Ahp Consistency - CI",{
 })
 
 test_that("Test Ahp Consistency - Lambda max",{
+  testStatus("Test Ahp Consistency - Lambda max")
   K <- matrix(c(
     1,7,1/5,1/8,1/2,1/3,1/5,1,
     1/7,1,1/8,1/9,1/4,1/5,1/9,1/8,
@@ -153,6 +169,7 @@ test_that("Test Ahp Consistency - Lambda max",{
 
 
 test_that("Test Ahp Consistency - p / c vector",{
+  testStatus("Test Ahp Consistency - p / c vector")
   K <- matrix(c(
     1,7,1/5,1/8,1/2,1/3,1/5,1,
     1/7,1,1/8,1/9,1/4,1/5,1/9,1/8,
@@ -172,6 +189,7 @@ test_that("Test Ahp Consistency - p / c vector",{
 
 
 test_that("Test Ahp - Big example",{
+  testStatus("Test Ahp - Big example")
   K <- matrix(c(
     1,7,1/5,1/8,1/2,1/3,1/5,1,
     1/7,1,1/8,1/9,1/4,1/5,1/9,1/8,
@@ -222,3 +240,86 @@ test_that("Test Ahp - Big example",{
   expect_equal(as.vector(result$ordering.result), 
                c(0.2801050, 0.1482273, 0.3813036, 0.1903641), tolerance = 1 / 100)
 })
+
+
+test_that("Test Dematel - Threshold",{
+  testStatus("Test Dematel - Threshold")
+  K <- matrix(c(0,3,0,2,0,0,0,0,3,0,
+                3,0,0,0,0,0,0,0,0,2,
+                4,1,0,2,1,3,1,2,3,2,
+                4,1,4,0,1,2,0,1,0,0,
+                3,2,3,1,0,3,0,2,0,0,
+                4,1,4,4,0,0,0,1,1,3,
+                3,0,0,0,0,2,0,0,0,0,
+                3,0,4,3,2,3,1,0,0,0,
+                4,3,2,0,0,1,0,0,0,2,
+                2,1,0,0,0,0,0,0,3,0), nrow = 10, byrow = TRUE)
+  result <- dematel(K)
+  expect_equal(result$threshold, 0.0629, tolerance = 1 / 1000)
+})
+
+
+test_that("Test Dematel - c vector",{
+  testStatus("Test Dematel - c vector")
+  K <- matrix(c(0,3,0,2,0,0,0,0,3,0,
+                3,0,0,0,0,0,0,0,0,2,
+                4,1,0,2,1,3,1,2,3,2,
+                4,1,4,0,1,2,0,1,0,0,
+                3,2,3,1,0,3,0,2,0,0,
+                4,1,4,4,0,0,0,1,1,3,
+                3,0,0,0,0,2,0,0,0,0,
+                3,0,4,3,2,3,1,0,0,0,
+                4,3,2,0,0,1,0,0,0,2,
+                2,1,0,0,0,0,0,0,3,0), nrow = 10, byrow = TRUE)
+  result <- dematel(K)
+  expect_equal(result$c, c(0.3991458, 0.2261648, 1.0204318, 0.7538625,
+                           0.8096760, 0.9780926, 0.2717874,
+                           0.9455390, 0.5960514, 0.2937537), tolerance = 1 / 1000)
+})
+
+
+test_that("Test Dematel - r vector",{
+  testStatus("Test Dematel - r vector")
+  K <- matrix(c(0,3,0,2,0,0,0,0,3,0,
+                3,0,0,0,0,0,0,0,0,2,
+                4,1,0,2,1,3,1,2,3,2,
+                4,1,4,0,1,2,0,1,0,0,
+                3,2,3,1,0,3,0,2,0,0,
+                4,1,4,4,0,0,0,1,1,3,
+                3,0,0,0,0,2,0,0,0,0,
+                3,0,4,3,2,3,1,0,0,0,
+                4,3,2,0,0,1,0,0,0,2,
+                2,1,0,0,0,0,0,0,3,0), nrow = 10, byrow = TRUE)
+  result <- dematel(K)
+  expect_equal(result$r, c(1.5527024, 0.7251791, 0.8551461, 0.6895615,
+                           0.2059141, 0.6790404, 0.1057168,
+                           0.3163574, 0.6484014, 0.5164858), tolerance = 1 / 1000)
+})
+
+
+test_that("Test Dematel - Influence matrix",{
+  testStatus("Test Dematel - Influence matrix")
+  K <- matrix(c(0,3,0,2,0,0,0,0,3,0,
+                3,0,0,0,0,0,0,0,0,2,
+                4,1,0,2,1,3,1,2,3,2,
+                4,1,4,0,1,2,0,1,0,0,
+                3,2,3,1,0,3,0,2,0,0,
+                4,1,4,4,0,0,0,1,1,3,
+                3,0,0,0,0,2,0,0,0,0,
+                3,0,4,3,2,3,1,0,0,0,
+                4,3,2,0,0,1,0,0,0,2,
+                2,1,0,0,0,0,0,0,3,0), nrow = 10, byrow = TRUE)
+  result <- dematel(K)
+  expect_equal(as.vector(result$influence.matrix), c(0, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+                           1, 0, 1, 1, 1, 1, 0, 0, 1, 0,
+                           0, 0, 0, 1, 1, 1, 0, 1, 1, 0,
+                           1, 0, 1, 0, 1, 1, 0, 1, 0, 0,
+                           0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 
+                           0, 0, 1, 1, 1, 0, 1, 1, 0, 0,
+                           0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                           0, 0, 1, 0, 1, 0, 0, 0, 0, 0,
+                           1, 0, 1, 0, 0, 1, 0, 0, 0, 1,
+                           0, 1, 1, 0, 0, 1, 0, 0, 1, 0), tolerance = 1 / 1000)
+})
+
+
