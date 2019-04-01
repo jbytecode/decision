@@ -118,6 +118,22 @@ test_that("Test Moora - scores",{
 })
 
 
+test_that("Test Ahp Consistency - consistent",{
+  testStatus("Test Ahp Consistency - consistent")
+  K <- matrix(c(
+    1,7,1/5,1/8,1/2,1/3,1/5,1,
+    1/7,1,1/8,1/9,1/4,1/5,1/9,1/8,
+    5,8,1,1/3,4,2,1,1,
+    8,9,3,1,7,5,3,3,
+    2,4,1/4,1/7,1,1/2,1/5,1/5,
+    3,5,1/2,1/5,2,1,1/3,1/3,
+    5,9,1,1/3,5,3,1,1,
+    1,8,1,1/3,5,3,1,1
+  ), nrow = 8, byrow = TRUE)
+  result <- ahp.consistency(K)
+  expect_equal(result$consistent, TRUE)
+})
+
 test_that("Test Ahp Consistency - CR",{
   testStatus("Test Ahp Consistency - CR")
   K <- matrix(c(
