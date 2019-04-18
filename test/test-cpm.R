@@ -22,6 +22,18 @@ test_that("CPM - critical path length",{
   testStatus("CPM - critical path length")
   dt <- data.frame(
     Activity = c("A", "B", "C", "D", "E", "F", "G"),
+    Dependency = c("-", "-", "A, B", "B,C", "C", "D", "D,E,F"),
+    Duration = c(10, 5, 7, 3, 2, 18, 5),
+    stringsAsFactors =  FALSE
+  )
+  result <- CPM(dt)
+  expect_equal(43, result$critical.path.length)
+})
+
+test_that("PERT - critical path length",{
+  testStatus("PERT - critical path length")
+  dt <- data.frame(
+    Activity = c("A", "B", "C", "D", "E", "F", "G"),
     Dependency = c("-", "-", "A, B", "B,C", "C", "D", "A,B, D "),
     O = c(9, 1, 5, 2, 2, 12, 5),
     M = c(10, 5, 7, 3, 5, 18, 5),
@@ -51,17 +63,7 @@ test_that("PERT - confidence interval",{
 })
 
 
-test_that("PERT - mean critical path length",{
-  testStatus("PERT - mean critical path length")
-  dt <- data.frame(
-    Activity = c("A", "B", "C", "D", "E", "F", "G"),
-    Dependency = c("-", "-", "A, B", "B,C", "C", "D", "D,E,F"),
-    Duration = c(10, 5, 7, 3, 2, 18, 5),
-    stringsAsFactors =  FALSE
-  )
-  result <- CPM(dt)
-  expect_equal(43, result$critical.path.length)
-})
+
 
 
 
