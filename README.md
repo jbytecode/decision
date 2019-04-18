@@ -14,7 +14,7 @@ Future work:
 
 The package also includes functions for other Operations Research and Decision Science subjects:
 * CPM (Critical Path Method) &#10004;
-* PERT
+* PERT &#10004;
 
 
 
