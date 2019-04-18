@@ -4,6 +4,8 @@ Initially, this package includes some multiple-criterion decision making tools s
 The future plan is to add several methods and algorithms in the research areas of Operations Research and Decision Science.
 
 Package content (The methods signed with &#10004; are implemented):
+
+### Multiple-criteria decision making (MCDA) tools 
 * Implement Dematel &#10004; 
 * Implement Topsis &#10004;
 * Implement Vikor &#10004;
@@ -13,9 +15,13 @@ Package content (The methods signed with &#10004; are implemented):
 * Implement ANP
 * Implement Promethee
 
-The package also includes functions for other Operations Research and Decision Science subjects:
+### Project management
 * CPM (Critical Path Method) &#10004;
 * PERT &#10004;
+
+### Decision making under uncertainity and risk
+* Maximax, Maximin, Minimax Regret
+
 
 
 
