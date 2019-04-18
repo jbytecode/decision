@@ -1,10 +1,3 @@
-dt <- data.frame(
-  Activity = c("A", "B", "C", "D", "E", "F", "G"),
-  Dependency = c("-", "-", "A, B", "B,C", "C", "D", "A,B, D "),
-  Duration = c(10, 5, 7, 3, 2, 18, 5),
-  stringsAsFactors =  FALSE
-)
-
 getMaxDuration <- function(dat, i){
   strActivities <- toString(dat$Dependency[i])
   listActivities <- unlist(strsplit(strActivities, ","))
@@ -77,11 +70,11 @@ CPM <- function(dat){
       break
     }
   }
+  path.length <- max(dat$end)
   result <- list(
     data = dat,
-    critical.path = cp
+    critical.path = cp,
+    critical.path.length = path.length
   )
   return(result)
 }
-
-print(CPM(dt))
