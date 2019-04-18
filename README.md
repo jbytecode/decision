@@ -1,4 +1,4 @@
-# decisionR: An R package for decision science # 
+# decisionR: An R package for decision science
 
 Initially, this package includes some multiple-criterion decision making tools such as Topsis and Vikor.
 The future plan is to add several methods and algorithms in the research areas of Operations Research and Decision Science.
