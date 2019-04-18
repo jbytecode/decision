@@ -12,6 +12,11 @@ Future work:
 * Implement ANP
 * Implement Promethee
 
+The package also includes functions for other Operations Research and Decision Science subjects:
+* CPM (Critical Path Method) &#10004;
+* PERT
+
+
 
 Installation:
 -------------
