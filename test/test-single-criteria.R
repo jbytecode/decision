@@ -17,3 +17,17 @@ test_that("Laplace - Laplace",{
   expect_equal(result$expected.values, c(2625, 5500, 6875))
   expect_equal(result$best.strategy, 3)
 })
+
+
+test_that("Maximin - maximin",{
+  testStatus("Maximin - maximin")
+  mat <- matrix(c(
+    26, 26, 18, 22,
+    22, 34, 30, 18,
+    28, 24, 34, 26,
+    22, 30, 28, 20
+  ), nrow = 4, byrow = TRUE)
+  result <- maximin(mat)
+  expect_equal(result$row.mins, c(18, 18, 24, 20))
+  expect_equal(result$best.strategy, 3)
+})

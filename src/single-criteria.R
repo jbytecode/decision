@@ -12,3 +12,15 @@ laplace <- function(mat){
   ))
 }
 
+maximin <- function(mat){
+  n <- dim(mat)[1]
+  p <- dim(mat)[2]
+  row.mins <- apply(mat, 1, function(x){
+    return (min(x))
+  })
+  best.strategy <- which(row.mins == max(row.mins))
+  return(list(
+    row.mins = row.mins,
+    best.strategy = best.strategy
+  ))
+}
