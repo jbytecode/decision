@@ -45,3 +45,17 @@ test_that("Maximax - maximax",{
   expect_equal(result$row.max, c(26, 34, 34, 30))
   expect_equal(sort(result$best.strategy), c(2, 3))
 })
+
+
+test_that("Savage - savage",{
+  testStatus("Savage - savage")
+  mat <- matrix(c(
+    26, 26, 18, 22,
+    22, 34, 30, 18,
+    28, 24, 34, 26,
+    22, 30, 28, 20
+  ), nrow = 4, byrow = TRUE)
+  result <- savage(mat)
+  expect_equal(sort(result$best.strategy), 4)
+})
+  
