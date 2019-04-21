@@ -24,3 +24,16 @@ maximin <- function(mat){
     best.strategy = best.strategy
   ))
 }
+
+maximax <- function(mat){
+  n <- dim(mat)[1]
+  p <- dim(mat)[2]
+  row.max <- apply(mat, 1, function(x){
+    return (max(x))
+  })
+  best.strategy <- which(row.max == max(row.max))
+  return(list(
+    row.max = row.max,
+    best.strategy = best.strategy
+  ))
+}
