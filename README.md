@@ -20,7 +20,11 @@ Package content (The methods signed with &#10004; are implemented):
 * PERT &#10004;
 
 ### Decision making under uncertainity and risk
-* Maximax, Maximin, Minimax Regret
+* Laplace &#10004;
+* Maximin &#10004;
+* Maximax &#10004;
+* Savage &#10004;
+* Hurwicz &#10004;
 
 
 
