@@ -58,4 +58,17 @@ test_that("Savage - savage",{
   result <- savage(mat)
   expect_equal(sort(result$best.strategy), 4)
 })
+
+
+test_that("Hurwicz - hurwicz",{
+  testStatus("Hurwicz - hurwicz")
+  mat <- matrix(c(
+    26, 26, 18, 22,
+    22, 34, 30, 18,
+    28, 24, 34, 26,
+    22, 30, 28, 20
+  ), nrow = 4, byrow = TRUE)
+  result <- hurwicz(mat)
+  expect_equal(sort(result$best.strategy), 3)
+})
   

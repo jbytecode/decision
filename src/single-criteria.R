@@ -61,10 +61,29 @@ savage <- function(mat){
   )
 }
 
+hurwicz <- function(mat, alpha = 0.5){
+  n <- dim(mat)[1]
+  p <- dim(mat)[2]
+  row.max <- apply(mat, 1, function(x){
+    return (max(x))
+  })
+  row.min <- apply(mat, 1, function(x){
+    return (min(x))
+  })
+  total <- alpha * row.max + (1 - alpha) * row.min
+  best.strategy <- which(total == max(total))
+  return(list(
+    row.max = row.max,
+    row.min = row.min,
+    total = total,
+    best.strategy = best.strategy
+  ))
+}
+
 mat <- matrix(c(
   26, 26, 18, 22,
   22, 34, 30, 18,
   28, 24, 34, 26,
   22, 30, 28, 20
 ), nrow = 4, byrow = TRUE)
-print(savage(mat))
+print(hurwicz(mat))
