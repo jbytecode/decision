@@ -108,7 +108,7 @@ expected.regret <- function(mat, weights){
   )
 }
 
-expected.value.under.full.information <- function(mat, weights){
+expected.value.of.perfect.information <- function(mat, weights){
   max.like <- maximum.likelihood(mat, weights)
   max.score <- max(max.like$expected.values)
   col.max <- apply(mat, 2, max)
@@ -118,7 +118,7 @@ expected.value.under.full.information <- function(mat, weights){
     list(
       max.score = max.score,
       expected.value.under.full.information = as.vector(expected.value.under.full.info),
-      expected.value.of.full.information = as.vector(expected.value.of.full.info)
+      expected.value.of.perfect.information = as.vector(expected.value.of.full.info)
     )
   )
 }

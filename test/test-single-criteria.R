@@ -133,8 +133,8 @@ test_that("Expected value of full (exact) information",{
     1500, 4750, 8000, 7750,
     2000, 5250, 8500, 11750
   ), nrow = 3, byrow = TRUE)
-  result <- (expected.value.under.full.information(mat, weights = c(0.2, 0.3, 0.3, 0.2)))
-  expect_equal(200, result$expected.value.of.full.information)
+  result <- (expected.value.of.perfect.information(mat, weights = c(0.2, 0.3, 0.3, 0.2)))
+  expect_equal(200, result$expected.value.of.perfect.information)
 })
 
 
@@ -145,6 +145,6 @@ test_that("Expected value of full (exact) information",{
     1500, 4750, 8000, 7750,
     2000, 5250, 8500, 11750
   ), nrow = 3, byrow = TRUE)
-  result <- (expected.value.under.full.information(mat, weights = c(0.2, 0.3, 0.3, 0.2)))
+  result <- (expected.value.of.perfect.information(mat, weights = c(0.2, 0.3, 0.3, 0.2)))
   expect_equal(7075, result$expected.value.under.full.information)
 })
