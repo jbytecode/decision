@@ -117,17 +117,9 @@ expected.value.under.full.information <- function(mat, weights){
   return (
     list(
       max.score = max.score,
-      expected.value.under.full.information = expected.value.under.full.info,
-      expected.value.of.full.information = expected.value.of.full.info
+      expected.value.under.full.information = as.vector(expected.value.under.full.info),
+      expected.value.of.full.information = as.vector(expected.value.of.full.info)
     )
   )
 }
 
-mat <- matrix(c(
-  3000, 2750, 2500, 2250,
-  1500, 4750, 8000, 7750,
-  2000, 5250, 8500, 11750
-), nrow = 3, byrow = TRUE)
-
-result <- (expected.value.under.full.information(mat, weights = c(0.2, 0.3, 0.3, 0.2)))
-print(result)

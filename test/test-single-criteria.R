@@ -123,3 +123,28 @@ test_that("Expected Regret - expected values",{
   result <- expected.regret(mat, c(0.2, 0.5, 0.2, 0.1))
   expect_equal(result$expected.values, c(8, 2.8, 5, 5))
 })
+
+
+
+test_that("Expected value of full (exact) information",{
+  testStatus("Expected value of full (exact) information - 1")
+  mat <- matrix(c(
+    3000, 2750, 2500, 2250,
+    1500, 4750, 8000, 7750,
+    2000, 5250, 8500, 11750
+  ), nrow = 3, byrow = TRUE)
+  result <- (expected.value.under.full.information(mat, weights = c(0.2, 0.3, 0.3, 0.2)))
+  expect_equal(200, result$expected.value.of.full.information)
+})
+
+
+test_that("Expected value of full (exact) information",{
+  testStatus("Expected value of full (exact) information - 2")
+  mat <- matrix(c(
+    3000, 2750, 2500, 2250,
+    1500, 4750, 8000, 7750,
+    2000, 5250, 8500, 11750
+  ), nrow = 3, byrow = TRUE)
+  result <- (expected.value.under.full.information(mat, weights = c(0.2, 0.3, 0.3, 0.2)))
+  expect_equal(7075, result$expected.value.under.full.information)
+})
