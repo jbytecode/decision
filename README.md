@@ -25,8 +25,9 @@ Package content (The methods signed with &#10004; are implemented):
 * Maximax &#10004;
 * Savage &#10004;
 * Hurwicz &#10004;
-
-
+* Maximum Likelihood &#10004;
+* Expected Regret &#10004;
+* Expected value of perfect information &#10004;
 
 
 Installation:
