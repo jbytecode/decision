@@ -123,7 +123,10 @@ topsis <- function(decisionMatrix, weights){
 	return(
 		list(
 		  decision.matrix = A,
-		  decision.matrix.weighted = newA.weighted,
+		  normalized.decision.matrix = newA,
+		  weighted.normalized.decision.matrix = newA.weighted,
+		  ideal.vector = col.maxs,
+		  worst.vector = col.mins,
 		  weights = w,
 			scores = scores,
 			best = best.alternative,
