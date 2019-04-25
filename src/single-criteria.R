@@ -80,10 +80,23 @@ hurwicz <- function(mat, alpha = 0.5){
   ))
 }
 
+maximum.likelihood <- function(mat, weights){
+  result <- mat %*% weights
+  best.strategy <- which(result == max(result))
+  return(
+    list(
+      expected.values = as.vector(result),
+      best.strategy = best.strategy
+    )
+  )
+}
+
 mat <- matrix(c(
   26, 26, 18, 22,
   22, 34, 30, 18,
   28, 24, 34, 26,
   22, 30, 28, 20
 ), nrow = 4, byrow = TRUE)
-print(hurwicz(mat))
+
+result <- (maximum.likelihood(mat, weights = c(0.2, 0.5, 0.2, 0.1)))
+      

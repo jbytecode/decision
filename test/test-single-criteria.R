@@ -71,4 +71,29 @@ test_that("Hurwicz - hurwicz",{
   result <- hurwicz(mat)
   expect_equal(sort(result$best.strategy), 3)
 })
+
+test_that("Maximum likelihood",{
+  testStatus("Maximum Likelihood")
+  mat <- matrix(c(
+    26, 26, 18, 22,
+    22, 34, 30, 18,
+    28, 24, 34, 26,
+    22, 30, 28, 20
+  ), nrow = 4, byrow = TRUE)
+  result <- maximum.likelihood(mat, c(0.2, 0.5, 0.2, 0.1))
+  expect_equal(result$best.strategy, 2)
+})
+
+
+test_that("Maximum likelihood - Scores",{
+  testStatus("Maximum Likelihood - Scores")
+  mat <- matrix(c(
+    26, 26, 18, 22,
+    22, 34, 30, 18,
+    28, 24, 34, 26,
+    22, 30, 28, 20
+  ), nrow = 4, byrow = TRUE)
+  result <- maximum.likelihood(mat, c(0.2, 0.5, 0.2, 0.1))
+  expect_equal(result$expected.values, c(24, 29.2, 27, 27))
+})
   
