@@ -91,6 +91,23 @@ maximum.likelihood <- function(mat, weights){
   )
 }
 
+expected.regret <- function(mat, weights){
+  col.max <- apply(mat, 2, max)
+  regret.mat <- mat
+  p <- dim(mat)[2]
+  for (i in 1:p){
+    regret.mat[,i] <- col.max[i] - mat[,i]
+  }
+  result <- regret.mat %*% weights
+  best.strategy <- which(result == min(result))
+  return(
+    list(
+      expected.values = as.vector(result),
+      best.strategy = best.strategy
+    )
+  )
+}
+
 mat <- matrix(c(
   26, 26, 18, 22,
   22, 34, 30, 18,
@@ -98,5 +115,5 @@ mat <- matrix(c(
   22, 30, 28, 20
 ), nrow = 4, byrow = TRUE)
 
-result <- (maximum.likelihood(mat, weights = c(0.2, 0.5, 0.2, 0.1)))
-      
+result <- (expected.regret(mat, weights = c(0.2, 0.5, 0.2, 0.1)))
+print(result)

@@ -97,3 +97,29 @@ test_that("Maximum likelihood - Scores",{
   expect_equal(result$expected.values, c(24, 29.2, 27, 27))
 })
   
+
+
+test_that("Expected Regret - Best Strategy",{
+  testStatus("Expected Regret - Best Strategy")
+  mat <- matrix(c(
+    26, 26, 18, 22,
+    22, 34, 30, 18,
+    28, 24, 34, 26,
+    22, 30, 28, 20
+  ), nrow = 4, byrow = TRUE)
+  result <- expected.regret(mat, c(0.2, 0.5, 0.2, 0.1))
+  expect_equal(result$best.strategy, 2)
+})
+
+
+test_that("Expected Regret - expected values",{
+  testStatus("Expected Regret - expected values")
+  mat <- matrix(c(
+    26, 26, 18, 22,
+    22, 34, 30, 18,
+    28, 24, 34, 26,
+    22, 30, 28, 20
+  ), nrow = 4, byrow = TRUE)
+  result <- expected.regret(mat, c(0.2, 0.5, 0.2, 0.1))
+  expect_equal(result$expected.values, c(8, 2.8, 5, 5))
+})
