@@ -29,6 +29,9 @@ Package content (The methods signed with &#10004; are implemented):
 * Expected Regret &#10004;
 * Expected value of perfect information &#10004;
 
+### Game Theory
+* Solution of m x n game matrix using linear programming &#10004;
+
 
 Installation:
 -------------
