@@ -22,7 +22,9 @@ Package content (The methods signed with &#10004; are implemented):
 ### Decision making under uncertainity and risk
 * Laplace &#10004;
 * Maximin &#10004;
+* Minimax &#10004;
 * Maximax &#10004;
+* Minimin &#10004;
 * Savage &#10004;
 * Hurwicz &#10004;
 * Maximum Likelihood &#10004;
