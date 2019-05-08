@@ -33,6 +33,21 @@ test_that("Maximin - maximin",{
 })
 
 
+test_that("Minimax - minimax",{
+  testStatus("Minimax - minimax")
+  mat <- matrix(c(
+    26, 26, 18, 22,
+    22, 34, 30, 18,
+    28, 24, 34, 26,
+    22, 30, 28, 20
+  ), nrow = 4, byrow = TRUE)
+  result <- minimax(mat)
+  expect_equal(result$row.max, c(26, 34, 34, 30))
+  expect_equal(result$best.strategy, 1)
+})
+
+
+
 test_that("Maximax - maximax",{
   testStatus("Maximax - maximax")
   mat <- matrix(c(
@@ -44,6 +59,20 @@ test_that("Maximax - maximax",{
   result <- maximax(mat)
   expect_equal(result$row.max, c(26, 34, 34, 30))
   expect_equal(sort(result$best.strategy), c(2, 3))
+})
+
+
+test_that("Minimin - minimin",{
+  testStatus("Minimin - minimin")
+  mat <- matrix(c(
+    26, 26, 18, 22,
+    22, 34, 30, 18,
+    28, 24, 34, 26,
+    22, 30, 28, 20
+  ), nrow = 4, byrow = TRUE)
+  result <- minimin(mat)
+  expect_equal(result$row.mins, c(18, 18,24,20))
+  expect_equal(sort(result$best.strategy), c(1, 2))
 })
 
 

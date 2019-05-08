@@ -38,6 +38,32 @@ maximax <- function(mat){
   ))
 }
 
+minimax <- function(mat){
+  n <- dim(mat)[1]
+  p <- dim(mat)[2]
+  row.max <- apply(mat, 1, function(x){
+    return (max(x))
+  })
+  best.strategy <- which(row.max == min(row.max))
+  return(list(
+    row.max = row.max,
+    best.strategy = best.strategy
+  ))
+}
+
+
+minimin <- function(mat){
+  n <- dim(mat)[1]
+  p <- dim(mat)[2]
+  row.mins <- apply(mat, 1, function(x){
+    return (min(x))
+  })
+  best.strategy <- which(row.mins == min(row.mins))
+  return(list(
+    row.mins = row.mins,
+    best.strategy = best.strategy
+  ))
+}
 
 savage <- function(mat){
   n <- dim(mat)[1]
