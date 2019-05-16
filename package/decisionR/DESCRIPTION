@@ -9,3 +9,5 @@ Description: Initially, the package implements some multiple-criteria decision m
 Depends: Rglpk
 License: GPL
 RoxygenNote: 6.1.1
+Suggests: 
+    testthat

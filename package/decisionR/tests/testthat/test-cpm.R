@@ -1,7 +1,5 @@
 library("testthat")
 
-source ("../src/cpm.R")
-
 testStatus <- function(strMessage){
   cat("* Doing test: ", strMessage, "\n")  
 }

@@ -1,7 +1,5 @@
 library("testthat")
 
-source ("../src/game.R")
-
 epsilon <- 0.001
 
 testStatus <- function(strMessage){

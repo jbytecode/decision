@@ -1,6 +1,5 @@
 library("testthat")
 
-source ("../src/multiple-criteria.R")
 
 testStatus <- function(strMessage){
   cat("* Doing test: ", strMessage, "\n")  
