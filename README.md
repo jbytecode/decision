@@ -35,13 +35,14 @@ Package content (The methods signed with &#10004; are implemented):
 * Solution of m x n game matrix using linear programming &#10004;
 
 
-Installation:
+### Installation:
 -------------
-
-library(devtools)
 
 devtools::install_github(repo = "https://github.com/jbytecode/decision", subdir = "package/decisionR")
 
+### Updating the package:
+
+devtools::update_packages(packages = "decisionR")
 
 
 Example for multiple-criteria decision making using Topsis:
