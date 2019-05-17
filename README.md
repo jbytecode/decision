@@ -49,7 +49,7 @@ devtools::update_packages(packages = "decisionR")
 
 
 ### Examples
-* [Multiple-criteria decision making tools] (examples/multiple-criteria.md)
+* [Multiple-criteria decision making tools] (/examples/multiple-criteria.md)
 
 
 
