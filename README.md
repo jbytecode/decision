@@ -51,5 +51,9 @@ devtools::update_packages(packages = "decisionR")
 ### Examples
 * [Multiple-criteria decision making tools] (https://github.com/jbytecode/decision/blob/master/examples/multiple-criteria.md)
 
+* [Game Theory] (https://github.com/jbytecode/decision/blob/master/examples/game-theory.md)
+
+* [CPM - PERT] (https://github.com/jbytecode/decision/blob/master/examples/cpm-pert.md)
+
 
 
