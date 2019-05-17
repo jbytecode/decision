@@ -36,7 +36,10 @@ Package content (The methods signed with &#10004; are implemented):
 
 ### Markov Chains
 * Solutions of n period ahead and equilibrium states &#10004;
- 
+
+### Linear Programming
+* Assignment problem &#10004;
+  
 
 ### Installation:
 -------------
