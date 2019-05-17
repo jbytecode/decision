@@ -34,6 +34,9 @@ Package content (The methods signed with &#10004; are implemented):
 ### Game Theory
 * Solution of m x n game matrix using linear programming &#10004;
 
+### Markov Chains
+* Solutions of n period ahead and equilibrium states &#10004;
+ 
 
 ### Installation:
 -------------
