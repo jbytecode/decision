@@ -49,7 +49,7 @@ devtools::update_packages(packages = "decisionR")
 
 
 ### Examples
-* [Multiple-criteria decision making tools] (jbytecode/decision/blob/master/examples/multiple-criteria.md)
+* [Multiple-criteria decision making tools] (https://github.com/jbytecode/decision/blob/master/examples/multiple-criteria.md)
 
 
 
