@@ -39,7 +39,7 @@ Package content (The methods signed with &#10004; are implemented):
 
 ### Linear Programming
 * Assignment problem &#10004;
-  
+* Knapsack Problem &#10004;  
 
 ### Installation:
 -------------
