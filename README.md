@@ -41,6 +41,12 @@ Package content (The methods signed with &#10004; are implemented):
 * Assignment problem &#10004;
 * Knapsack Problem &#10004;  
 
+### Scheduling Problem
+* n jobs - 2 machines &#10004;
+* n jobs - 3 machines &#10004;
+* n jobs - m machines &#10004;
+
+
 ### Installation:
 -------------
 
