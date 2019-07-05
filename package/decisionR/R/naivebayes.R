@@ -2,7 +2,8 @@
 # P(C \ x1, x2, ..., xn) ~ P(x1 \ C) x P(x2 \ C) x ... x P(xn \ C) x P(C)
 
 naivebayes <- function(formula, data, input){
-  mf <- model.frame(formula)
+  stringdata <- k <- as.data.frame(lapply(data, as.character), stringsAsFactors = FALSE)
+  mf <- model.frame(formula, data = stringdata)
   classes <- mf[,1]
   uniqueclasses <- unique(classes)
   inputs <- mf[,2:dim(mf)[2]]
@@ -28,3 +29,89 @@ naivebayes <- function(formula, data, input){
   }
   return(result)
 }
+
+golfdata <- data.frame(
+gorunum = c(
+  "Gunesli", 
+  "Gunesli", 
+  "Bulutlu", 
+  "Yagmurlu", 
+  "Yagmurlu",
+  "Yagmurlu",
+  "Bulutlu",
+  "Gunesli",
+  "Gunesli",
+  "Yagmurlu",
+  "Gunesli",
+  "Bulutlu",
+  "Bulutlu",
+  "Yagmurlu")
+,
+sicaklik = c(
+  "Sicak",
+  "Sicak",
+  "Sicak",
+  "Ilik",
+  "Soguk",
+  "Soguk",
+  "Soguk",
+  "Ilik",
+  "Soguk",
+  "Ilik",
+  "Ilik",
+  "Ilik",
+  "Sicak",
+  "Ilik"
+)
+,
+nem = c(
+  "Yuksek",
+  "Yuksek",
+  "Yuksek",
+  "Yuksek",
+  "Normal",
+  "Normal",
+  "Normal",
+  "Yuksek",
+  "Normal",
+  "Normal",
+  "Normal",
+  "Yuksek",
+  "Normal",
+  "Yuksek"
+)
+,
+ruzgar = c(
+  "Zayif",
+  "Guclu",
+  "Zayif",
+  "Zayif",
+  "Zayif",
+  "Guclu",
+  "Guclu",
+  "Zayif",
+  "Zayif",
+  "Zayif",
+  "Guclu",
+  "Guclu",
+  "Zayif",
+  "Guclu"
+)
+,
+karar = c(
+  "Hayir",
+  "Hayir",
+  "Evet",
+  "Evet",
+  "Evet",
+  "Hayir",
+  "Evet",
+  "Hayir",
+  "Evet",
+  "Evet",
+  "Evet",
+  "Evet",
+  "Evet",
+  "Hayir"
+)
+)
