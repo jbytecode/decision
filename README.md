@@ -46,6 +46,9 @@ Package content (The methods signed with &#10004; are implemented):
 * n jobs - 3 machines &#10004;
 * n jobs - m machines &#10004;
 
+### Classification
+* Naive Bayes Classifier &#10004;
+
 
 ### Installation:
 -------------
