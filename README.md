@@ -48,7 +48,7 @@ Package content (The methods signed with &#10004; are implemented):
 
 ### Classification
 * Naive Bayes Classifier &#10004;
-
+* Gaussian Naive Bayes Classifier &#10004;
 
 ### Installation:
 -------------
