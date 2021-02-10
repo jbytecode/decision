@@ -471,6 +471,8 @@ dematel <- function(K, threshold = NULL){
       }
     }
   }
+  w.row = sqrt((c.plus.r ^ 2.0) + (c.minus.r ^ 2.0))
+  w = w.row / sum(w.row)
   return(
     list(
       ND = ND,
@@ -480,7 +482,8 @@ dematel <- function(K, threshold = NULL){
       c.plus.r = c.plus.r,
       c.minus.r = c.minus.r,
       threshold = threshold,
-      influence.matrix = influence.matrix
+      influence.matrix = influence.matrix,
+      weights = w
     )
   )
 }
