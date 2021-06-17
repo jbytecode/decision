@@ -123,11 +123,11 @@ PERT <- function(dat){
   means.sum <- sum(means)
   variances.sum <- sum(variances)
   conf95 <- c(
-    means.sum + qnorm(0.05/2) * variances.sum,
-    means.sum + qnorm(1-0.05/2) * variances.sum)
+    means.sum + qnorm(0.05/2) * sqrt(variances.sum),
+    means.sum + qnorm(1-0.05/2) * sqrt(variances.sum))
   conf99 <- c(
-    means.sum + qnorm(0.01/2) * variances.sum,
-    means.sum + qnorm(1-0.01/2) * variances.sum)
+    means.sum + qnorm(0.01/2) * sqrt(variances.sum),
+    means.sum + qnorm(1-0.01/2) * sqrt(variances.sum)
   
   result <- list(
     data = dat,
