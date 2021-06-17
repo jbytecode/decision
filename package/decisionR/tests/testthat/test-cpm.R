@@ -54,8 +54,8 @@ test_that("PERT - confidence interval",{
     stringsAsFactors =  FALSE
   )
   result <- PERT(dt)
-  z1 <- sum(result$means) + qnorm(0.05/2) * sum(result$variances)
-  z2 <- sum(result$means) + qnorm(1 - 0.05/2) * sum(result$variances)
+  z1 <- sum(result$means) + qnorm(0.05/2) * sqrt(sum(result$variances))
+  z2 <- sum(result$means) + qnorm(1 - 0.05/2) * sqrt(sum(result$variances))
   expect_equal(result$confidence95[1], z1)
   expect_equal(result$confidence95[2], z2)
 })
