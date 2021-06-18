@@ -1,13 +1,7 @@
 library("testthat")
 
 
-
-testStatus <- function(strMessage){
-  cat("* Doing test: ", strMessage, "\n")  
-}
-
-test_that("Assignment Problem",{
-  testStatus("Assignment Problem")
+test_that("Assignment Problem", {
   m <- matrix(c(
     5, 6, 4,
     2, 1, 3,

@@ -1,13 +1,6 @@
 library("testthat")
 
-
-
-testStatus <- function(strMessage){
-  cat("* Doing test: ", strMessage, "\n")  
-}
-
-test_that("Laplace - Laplace",{
-  testStatus("Laplace - Laplace")
+test_that("Laplace - Laplace", {
   mat <- matrix(c(
     3000, 2750, 2500, 2250,
     1500, 4750, 8000, 7750,
@@ -19,8 +12,7 @@ test_that("Laplace - Laplace",{
 })
 
 
-test_that("Maximin - maximin",{
-  testStatus("Maximin - maximin")
+test_that("Maximin - maximin", {
   mat <- matrix(c(
     26, 26, 18, 22,
     22, 34, 30, 18,
@@ -33,8 +25,7 @@ test_that("Maximin - maximin",{
 })
 
 
-test_that("Minimax - minimax",{
-  testStatus("Minimax - minimax")
+test_that("Minimax - minimax", {
   mat <- matrix(c(
     26, 26, 18, 22,
     22, 34, 30, 18,
@@ -48,8 +39,7 @@ test_that("Minimax - minimax",{
 
 
 
-test_that("Maximax - maximax",{
-  testStatus("Maximax - maximax")
+test_that("Maximax - maximax", {
   mat <- matrix(c(
     26, 26, 18, 22,
     22, 34, 30, 18,
@@ -62,8 +52,7 @@ test_that("Maximax - maximax",{
 })
 
 
-test_that("Minimin - minimin",{
-  testStatus("Minimin - minimin")
+test_that("Minimin - minimin", {
   mat <- matrix(c(
     26, 26, 18, 22,
     22, 34, 30, 18,
@@ -71,13 +60,12 @@ test_that("Minimin - minimin",{
     22, 30, 28, 20
   ), nrow = 4, byrow = TRUE)
   result <- minimin(mat)
-  expect_equal(result$row.mins, c(18, 18,24,20))
+  expect_equal(result$row.mins, c(18, 18, 24, 20))
   expect_equal(sort(result$best.strategy), c(1, 2))
 })
 
 
-test_that("Savage - savage",{
-  testStatus("Savage - savage")
+test_that("Savage - savage", {
   mat <- matrix(c(
     26, 26, 18, 22,
     22, 34, 30, 18,
@@ -89,8 +77,7 @@ test_that("Savage - savage",{
 })
 
 
-test_that("Hurwicz - hurwicz",{
-  testStatus("Hurwicz - hurwicz")
+test_that("Hurwicz - hurwicz", {
   mat <- matrix(c(
     26, 26, 18, 22,
     22, 34, 30, 18,
@@ -101,8 +88,7 @@ test_that("Hurwicz - hurwicz",{
   expect_equal(sort(result$best.strategy), 3)
 })
 
-test_that("Maximum likelihood",{
-  testStatus("Maximum Likelihood")
+test_that("Maximum likelihood", {
   mat <- matrix(c(
     26, 26, 18, 22,
     22, 34, 30, 18,
@@ -114,8 +100,7 @@ test_that("Maximum likelihood",{
 })
 
 
-test_that("Maximum likelihood - Scores",{
-  testStatus("Maximum Likelihood - Scores")
+test_that("Maximum likelihood - Scores", {
   mat <- matrix(c(
     26, 26, 18, 22,
     22, 34, 30, 18,
@@ -125,11 +110,10 @@ test_that("Maximum likelihood - Scores",{
   result <- maximum.likelihood(mat, c(0.2, 0.5, 0.2, 0.1))
   expect_equal(result$expected.values, c(24, 29.2, 27, 27))
 })
-  
 
 
-test_that("Expected Regret - Best Strategy",{
-  testStatus("Expected Regret - Best Strategy")
+
+test_that("Expected Regret - Best Strategy", {
   mat <- matrix(c(
     26, 26, 18, 22,
     22, 34, 30, 18,
@@ -141,8 +125,7 @@ test_that("Expected Regret - Best Strategy",{
 })
 
 
-test_that("Expected Regret - expected values",{
-  testStatus("Expected Regret - expected values")
+test_that("Expected Regret - expected values", {
   mat <- matrix(c(
     26, 26, 18, 22,
     22, 34, 30, 18,
@@ -155,8 +138,7 @@ test_that("Expected Regret - expected values",{
 
 
 
-test_that("Expected value of full (exact) information",{
-  testStatus("Expected value of full (exact) information - 1")
+test_that("Expected value of full (exact) information", {
   mat <- matrix(c(
     3000, 2750, 2500, 2250,
     1500, 4750, 8000, 7750,
@@ -167,8 +149,7 @@ test_that("Expected value of full (exact) information",{
 })
 
 
-test_that("Expected value of full (exact) information",{
-  testStatus("Expected value of full (exact) information - 2")
+test_that("Expected value of full (exact) information", {
   mat <- matrix(c(
     3000, 2750, 2500, 2250,
     1500, 4750, 8000, 7750,
