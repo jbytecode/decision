@@ -6,6 +6,14 @@ Connection <- setRefClass(
             .self$from <- from
             .self$to <- to
             .self$length <- length
+        },
+        show = function() {
+            print(sprintf(
+                "Connection(%s, %s, %f)",
+                .self$from,
+                .self$to,
+                .self$length
+            ))
         }
     )
 )
