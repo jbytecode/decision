@@ -12,6 +12,7 @@ Package content (The methods signed with &#10004; are implemented):
 * Implement Moora &#10004;
 * Implement Electre &#10004;
 * Implement AHP &#10004;
+* Implement SAW &#10004;
 * Implement ANP
 * Implement Promethee
 
