@@ -1,13 +1,13 @@
 Package: decisionR
 Type: Package
 Title: Implements some multiple-criteria decision making methods
-Version: 1.1
+Version: 1.3
 Date: 2019-03-28
 Author: Mehmet Hakan Satman <mhsatman@istanbul.edu.tr>
 Maintainer: Mehmet Hakan Satman <mhsatman@istanbul.edu.tr>
 Description: Initially, the package implements some multiple-criteria decision making methods including Vikor, Topsis, Electre, and Moora.
 Depends: Rglpk
 License: GPL
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.1
 Suggests: 
     testthat
